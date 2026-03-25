@@ -1,0 +1,291 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folia | L'écriture sans compromis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --folia-orange: #c2693f; /* Orange terreux du logo */
+            --bg-creme: #fdfaf6;
+            --apple-gray: #86868b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1d1d1f;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo-font {
+            font-family: 'DM Serif Display', serif;
+        }
+
+        /* Animations de défilement fluides */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animation de l'interface qui s'agrandit */
+        .sticky-container {
+            height: 200vh;
+            position: relative;
+        }
+
+        .sticky-element {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .interface-zoom {
+            width: 80%;
+            transform: scale(0.8) rotateX(10deg);
+            transition: transform 0.1s linear;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.1);
+            border-radius: 20px;
+        }
+
+        /* Bento Grid Style */
+        .bento-card {
+            background: #f5f5f7;
+            border-radius: 30px;
+            padding: 40px;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .bento-card:hover {
+            transform: scale(1.02);
+        }
+
+        .btn-folia {
+            background: var(--folia-orange);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 980px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-folia:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+
+        /* Comparaison table */
+        .comparison-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            opacity: 0.02;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grain"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-[100] bg-white/80 backdrop-blur-xl border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="logo-font text-2xl text-[var(--folia-orange)]">Folia</span>
+            </div>
+            <div class="hidden md:flex gap-10 text-[13px] font-medium text-gray-500">
+                <a href="#comparaison" class="hover:text-black">Pourquoi Folia ?</a>
+                <a href="#logiciel" class="hover:text-black">L'interface</a>
+                <a href="#telecharger" class="bg-[var(--folia-orange)] text-white px-4 py-1 rounded-full">Télécharger</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-40 pb-20 px-6 text-center">
+        <div class="reveal">
+            <h1 class="text-6xl md:text-8xl font-bold mb-8 tracking-tight">L'écriture, <br><span class="italic text-[var(--folia-orange)]">enfin libérée.</span></h1>
+            <p class="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12">
+                Oubliez les abonnements, les comptes et la complexité. Folia est le traitement de texte qui respecte votre temps et votre talent.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#" class="btn-folia text-lg">Essayer Folia gratuitement</a>
+                <span class="text-sm text-gray-400">Pour Windows 10 & 11 • 42Mo</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Scroll Section -->
+    <div id="logiciel" class="sticky-container">
+        <div class="sticky-element">
+            <div class="interface-zoom" id="main-ui">
+                <!-- Simulation de l'UI basée sur l'image -->
+                <div class="bg-white border border-gray-100 rounded-xl overflow-hidden flex flex-col h-[70vh]">
+                    <div class="h-12 border-b border-gray-100 flex items-center justify-between px-6 bg-white">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-100"></div>
+                            <div class="w-3 h-3 rounded-full bg-orange-100"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-100"></div>
+                        </div>
+                        <div class="text-[11px] font-medium text-gray-300">Document sans titre</div>
+                        <div class="bg-[var(--folia-orange)] text-[10px] text-white font-bold px-3 py-1 rounded">EXPORTER</div>
+                    </div>
+                    <div class="flex flex-1 bg-[var(--bg-creme)]">
+                        <div class="w-64 border-r border-orange-50 p-8 hidden md:block">
+                            <div class="text-[9px] font-bold text-gray-300 uppercase tracking-widest mb-6">Styles</div>
+                            <div class="space-y-4">
+                                <div class="text-[var(--folia-orange)] font-bold text-sm">Corps de texte</div>
+                                <div class="text-gray-300 text-sm">Titre 1</div>
+                                <div class="text-gray-300 text-sm">Titre 2</div>
+                                <div class="text-gray-300 text-sm">Citation</div>
+                            </div>
+                        </div>
+                        <div class="flex-1 p-12">
+                            <div class="bg-white h-full shadow-2xl p-16 text-left">
+                                <h3 class="text-4xl mb-6 text-gray-800 italic">Commencez ici...</h3>
+                                <div class="w-24 h-1 bg-orange-100 mb-4"></div>
+                                <div class="w-full h-4 bg-gray-50 rounded mb-2"></div>
+                                <div class="w-5/6 h-4 bg-gray-50 rounded mb-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why Folia vs Others -->
+    <section id="comparaison" class="py-40 px-6 bg-black text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-24 reveal">
+                <h2 class="text-5xl md:text-7xl font-bold mb-8">Pourquoi choisir <span class="text-[var(--folia-orange)]">Folia</span> ?</h2>
+                <p class="text-gray-500 text-xl">Il n'est pas seulement un autre traitement de texte. C'est une autre philosophie.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Comparison 1 -->
+                <div class="reveal">
+                    <h3 class="text-3xl font-bold mb-6 italic">Contre la "Location" de logiciels</h3>
+                    <p class="text-zinc-400 text-lg leading-relaxed">
+                        Alors que Word ou Scrivener vous demandent des abonnements ou des mises à jour payantes, Folia appartient au passé... dans le bon sens. Vous le téléchargez, il est à vous. Pour toujours. Sans compte Cloud obligatoire.
+                    </p>
+                </div>
+                <!-- Comparison 2 -->
+                <div class="reveal">
+                    <h3 class="text-3xl font-bold mb-6 italic">Contre le "Désordre" visuel</h3>
+                    <p class="text-zinc-400 text-lg leading-relaxed">
+                        Regardez votre barre d'outils actuelle. Combien de boutons utilisez-vous vraiment ? Folia utilise un design adaptatif qui ne montre que ce dont vous avez besoin au moment où vous écrivez.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bento Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-32">
+                <div class="bento-card bg-zinc-900 border border-zinc-800 reveal">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h4 class="font-bold text-xl mb-2">Vitesse Pure</h4>
+                    <p class="text-zinc-500 text-sm">Lancement en moins de 1 seconde, même avec des documents de 500 pages.</p>
+                </div>
+                <div class="bento-card bg-zinc-900 border border-zinc-800 reveal" style="transition-delay: 0.1s">
+                    <div class="text-4xl mb-4">💎</div>
+                    <h4 class="font-bold text-xl mb-2">Export Pro</h4>
+                    <p class="text-zinc-500 text-sm">Exportation native en PDF, DOCX et Markdown avec une mise en page parfaite.</p>
+                </div>
+                <div class="bento-card bg-zinc-900 border border-zinc-800 reveal" style="transition-delay: 0.2s">
+                    <div class="text-4xl mb-4">🛡️</div>
+                    <h4 class="font-bold text-xl mb-2">100% Local</h4>
+                    <p class="text-zinc-500 text-sm">Vos écrits ne quittent jamais votre ordinateur. Confidentialité absolue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto / Creative Section -->
+    <section class="py-40 px-6">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-5xl md:text-7xl font-bold mb-12 italic">Fait par des écrivains, <br> pour des écrivains.</h2>
+            <div class="space-y-8 text-2xl text-gray-500 leading-relaxed">
+                <p>On ne devrait pas avoir besoin d'un diplôme en informatique pour changer une marge ou choisir une police.</p>
+                <p>On ne devrait pas être interrompu par une notification de mise à jour au milieu d'une scène cruciale.</p>
+                <p class="text-black font-semibold">Folia est le silence dont votre créativité a besoin.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section id="telecharger" class="py-32 px-6 text-center bg-[var(--bg-creme)]">
+        <div class="reveal">
+            <div class="logo-font text-8xl text-[var(--folia-orange)] mb-8">Folia</div>
+            <h2 class="text-4xl font-bold mb-12">Gratuit. Sans pub. Sans limite.</h2>
+            <a href="#" class="btn-folia text-2xl px-20 py-6 inline-block shadow-2xl">Télécharger pour Windows</a>
+            <div class="mt-8 text-gray-400 flex justify-center gap-6 text-sm">
+                <span>Version 1.0.4</span>
+                <span>•</span>
+                <span>DM Serif Display Typography</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-gray-100 text-center text-xs text-gray-400">
+        <p>&copy; 2024 Folia Software. L'élégance de l'écriture.</p>
+    </footer>
+
+    <script>
+        // Reveal elements on scroll
+        const revealElements = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        // Zoom effect on scroll
+        const handleZoom = () => {
+            const container = document.querySelector('.sticky-container');
+            const ui = document.getElementById('main-ui');
+            const rect = container.getBoundingClientRect();
+            const scrollPercent = Math.min(Math.max(0, -rect.top / rect.height), 1);
+            
+            // Zoom progressif et redressement de l'angle
+            const scale = 0.8 + (scrollPercent * 0.4);
+            const rotate = 10 - (scrollPercent * 10);
+            
+            ui.style.transform = `scale(${scale}) rotateX(${rotate}deg)`;
+        };
+
+        window.addEventListener('scroll', () => {
+            revealElements();
+            handleZoom();
+        });
+
+        window.addEventListener('load', revealElements);
+    </script>
+</body>
+</html>
+
